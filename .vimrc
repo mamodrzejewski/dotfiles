@@ -12,6 +12,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'preservim/nerdtree'
 Plug 'aluriak/nerdcommenter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tomasiser/vim-code-dark'
@@ -19,11 +20,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'haya14busa/vim-easymotion'
-Plug 'evanleck/vim-svelte'
+" Plug 'evanleck/vim-svelte'
 Plug 'yggdroot/indentline'
 Plug 'cespare/vim-toml'                " TOML support
 Plug 'tomtom/tcomment_vim'
-" Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 Plug 'wincent/terminus'
 call plug#end()
 
@@ -35,7 +36,7 @@ call plug#end()
 " is present. But we're including it here just in case this config file is
 " loaded some other way (e.g. saved as `foo`, and then Vim started with
 " `vim -u foo`).
-set nocompatible
+" set nocompatible
 
 " Turn on syntax highlighting.
 syntax on
@@ -71,6 +72,8 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <C-h> <C-w>h
 
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 " Toggle hidden buffers.
 set hidden
 
@@ -89,6 +92,11 @@ nnoremap S :%s//g<Left><Left>
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> 
 " 'Q' in normal mode enters Ex mode. You almost never want this.
+
+" Do not conceal quotes in JSON files
+let g:vim_json_conceal=0
+let g:indentLine_fileTypeExclude = ['markdown', 'md']
+let g:markdown_fenced_languages = ['python', 'js=javascript', 'ruby']
 
 " NerdTree
 nnoremap <C-n> :NERDTreeToggle<CR>
